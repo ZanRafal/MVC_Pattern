@@ -6,23 +6,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DataSource {
-    private static DataSource myInstance = new DataSource();
+    private final static DataSource instance = new DataSource();
 
     public static DataSource getInstance() {
-        return myInstance;
+        return instance;
     }
 
     //Implementacja Singleton
     private DataSource() {}
 
-    private List<User> users = new LinkedList<User>() {{
-        add(new User("Geralt", 1231, 1));
-        add(new User("Triss", 1241, 2));
-        add(new User("Yennefer", 1521, 1));
-        add(new User("Ciri", 1261, 2));
+    private final List<User> users = new LinkedList<>() {{
+        add(new User("Geralt", 123L, 1));
+        add(new User("Triss", 124L, 2));
+        add(new User("Yennefer", 152L, 1));
+        add(new User("Ciri", 126L, 2));
     }};
 
-    private long maxUserId = 1261;
+    private long maxUserId = 126L;
 
     public List<User> getUsers() {
         return users;
@@ -32,7 +32,6 @@ public class DataSource {
         if (newUser == User.NULL_USER)
             return User.NULL_USER;
 
-        //nowy Użytkownik
         if (newUser.getId() == 0)
             return createNewUser(newUser);
         else

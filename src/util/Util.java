@@ -3,7 +3,7 @@ package util;
 import bean.User;
 
 public final class Util {
-    public static final String DELETED_MARKER = "(deleted)";
+    public static final String DELETED_MARKER = " (deleted)";
 
     public static boolean isUserDeleted(User user) {
         return user.getName().endsWith(DELETED_MARKER);

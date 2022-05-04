@@ -17,9 +17,8 @@ public class UsersView implements View {
 
     @Override
     public void refesh(DataModel dataModel) {
-        System.out.println("All users:");
-        List<User> users = dataModel.getUserList();
-        for (User user : users) {
+        System.out.println("All " + (dataModel.isDisplayDeletedUserList() ? "deleted " : "") + "users:");
+        for (User user : dataModel.getUsers()) {
             System.out.println("\t" + user);
         }
         System.out.println("====================================");
@@ -27,5 +26,13 @@ public class UsersView implements View {
 
     public void fireShowAllUsersEvent() {
         controller.onShowAllUsers();
+    }
+
+    public void fireShowDeletedUsersEvent() {
+        controller.onShowAllDeletedUsers();
+    }
+
+    public void fireOpenUserEditFormEvent(long id) {
+        controller.onOpenUserEditForm(id);
     }
 }
